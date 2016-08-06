@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :short_urls
   before_create :encrypt_password
   after_create :update_authentication_token
   def encrypt_password
@@ -6,8 +7,7 @@ class User < ActiveRecord::Base
   end
 
     def self.authenticate(email, password)
-      debugger
-       user = User.find_by_email(email)
+      user = User.find_by_email(email)
   	  if user && user.password == Base64.encode64(password) #&& user.password==password.strip
   	    user
   	  else

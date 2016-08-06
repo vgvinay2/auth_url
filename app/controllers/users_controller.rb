@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+      before_action :authenticate_user ,except: [:new,:create]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :decrypt_password, only: [:show, :edit]
   # GET /users
@@ -28,7 +29,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        session[:user_id] = @user.id
+        format.html { redirect_to short_urls_path, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

@@ -6,7 +6,6 @@ class Api::V1::SessionsController < ApplicationController
 
   def create
     user = User.authenticate(params[:email], params[:password])
-    debugger
     if user
       # session[:user_id] = user.id
        update_authentication_token if user.api_token.nil? 

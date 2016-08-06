@@ -6,6 +6,15 @@ class ApplicationController < ActionController::Base
   
   private
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find(session[:user_id]) if session[:user_id] && User.pluck(:id).include?(session[:user_id])
   end
+
+  def authenticate_user
+  	if session[:user_id] 
+  	 	return current_user
+  	 else
+  	   flash[:notice] = 'login in required.'  
+  	   redirect_to root_url, :notice => "NO permission to acces  please login first"
+  	 end 	
+  end 
 end

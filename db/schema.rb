@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160805064528) do
+ActiveRecord::Schema.define(version: 20160806141339) do
+
+  create_table "short_urls", force: :cascade do |t|
+    t.string   "original_url"
+    t.string   "short_url"
+    t.integer  "user_id"
+    t.integer  "visits_count"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
