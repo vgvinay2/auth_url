@@ -1,4 +1,6 @@
 class UrlsController < ApplicationController
+	# bitly implementation  https://richonrails.com/articles/shortening-urls-with-bit-ly
+	
   def new
   end
 
