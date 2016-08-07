@@ -31,7 +31,6 @@ class Api::V1::ShortUrlsController < ApplicationController
   # PATCH/PUT /short_urls/1
   # PATCH/PUT /short_urls/1.json
   def update
-    debugger
       if @short_url.update(short_url_params)
        render json: { short_url: @short_url, status: "updated"  }
       else

@@ -21,7 +21,7 @@ Rails.application.routes.draw do
        end 
        resources :users,only: [:create]
        resources :short_urls
-       resources :short_visit
+       resources :short_visits,only: [:create]
     end
   end 
 end

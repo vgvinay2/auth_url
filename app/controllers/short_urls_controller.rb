@@ -54,7 +54,6 @@ class ShortUrlsController < ApplicationController
   # DELETE /short_urls/1
   # DELETE /short_urls/1.json
   def destroy
-    debugger
     @short_url.destroy
     respond_to do |format|
       format.html { redirect_to short_urls_url, notice: 'Short url was successfully destroyed.' }
