@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  # get 'urls/new'
+
+  # get 'urls/create'
+ resources :urls, only: [:new, :create]
   resources :short_visits
   resources :short_urls
   get "log_in" => "sessions#new", :as => "log_in"
