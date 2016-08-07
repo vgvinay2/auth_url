@@ -15,16 +15,25 @@ class Api::V1::ShortUrlsController < ApplicationController
 
   # GET /short_urls/1/edit
   def edit
-     render json:  { short_url: @short_url, status: "edit form "  }
+    render json:  { short_url: @short_url, status: "edit form "  }
   end
-# we require this kind of parameters
-#"short_url"=>{"original_url"=>"http://localhost:3000/short_urls/new", "short_url"=>"http://rock.com", "visits_count"=>"1"}
+  
+   # we require this kind of parameters
+   #"short_url"=>{"original_url"=>"http://localhost:3000/short_urls/new", "short_url"=>"http://rock.com", "visits_count"=>"1"}
+  
   def create
-    short_url = api_current_user.short_urls.new(short_url_params)
-    if short_url.save
-      render json:  { short_url: short_url, status: "created"  }
+    if params[:short_url][:original_url].present?
+        client = Bitly.client
+        @url = client.shorten(params[:short_url][:original_url])
+        puts  @url.inspect 
+       short_url = api_current_user.short_urls.new(original_url: @url.long_url, short_url:@url.short_url, visits_count: 0 )
+        if short_url.save
+         render json:  { short_url: short_url, status: "created"  }
+        else
+        render json: {  errors: short_url.errors, status: "failed" } 
+        end   
     else
-      render json: {  errors: short_url.errors, status: "failed" } 
+      render json: {  errors: "original_url send proper", status: "failed" } 
     end
   end
 

@@ -1,6 +1,6 @@
 class UrlsController < ApplicationController
 	# bitly implementation  https://richonrails.com/articles/shortening-urls-with-bit-ly
-	
+
   def new
   end
 
@@ -8,6 +8,7 @@ class UrlsController < ApplicationController
     if !params[:url].blank?
       client = Bitly.client
       @url = client.shorten(params[:url])
+     puts  @url.inspect 
     end
   end
 end
