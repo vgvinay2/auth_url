@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Short url:</strong>
+  <%= @short_visit.short_url_id %>
+</p>
+
+<p>
+  <strong>Visitor ip:</strong>
+  <%= @short_visit.visitor_ip %>
+</p>
+
+<p>
+  <strong>Visitor city:</strong>
+  <%= @short_visit.visitor_city %>
+</p>
+
+<p>
+  <strong>Visitior state:</strong>
+  <%= @short_visit.visitior_state %>
+</p>
+
+<p>
+  <strong>Visitor country iso:</strong>
+  <%= @short_visit.visitor_country_iso %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @short_visit.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @short_visit.longitude %>
+</p>
+
+<%= link_to 'Edit', edit_short_visit_path(@short_visit) %> |
+<%= link_to 'Back', short_visits_path %>

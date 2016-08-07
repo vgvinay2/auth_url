@@ -1,0 +1,45 @@
+<%= form_for(@short_visit) do |f| %>
+  <% if @short_visit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@short_visit.errors.count, "error") %> prohibited this short_visit from being saved:</h2>
+
+      <ul>
+      <% @short_visit.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :short_url_id %><br>
+    <%= f.number_field :short_url_id %>
+  </div>
+  <div class="field">
+    <%= f.label :visitor_ip %><br>
+    <%= f.text_field :visitor_ip %>
+  </div>
+  <div class="field">
+    <%= f.label :visitor_city %><br>
+    <%= f.text_field :visitor_city %>
+  </div>
+  <div class="field">
+    <%= f.label :visitior_state %><br>
+    <%= f.text_field :visitior_state %>
+  </div>
+  <div class="field">
+    <%= f.label :visitor_country_iso %><br>
+    <%= f.text_field :visitor_country_iso %>
+  </div>
+  <div class="field">
+    <%= f.label :latitude %><br>
+    <%= f.text_field :latitude %>
+  </div>
+  <div class="field">
+    <%= f.label :longitude %><br>
+    <%= f.text_field :longitude %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

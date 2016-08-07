@@ -15,7 +15,7 @@ class Api::V1::ShortUrlsController < ApplicationController
 
   # GET /short_urls/1/edit
   def edit
-     render json:  { short_url: @ short_url, status: "edit form "  }
+     render json:  { short_url: @short_url, status: "edit form "  }
   end
 # we require this kind of parameters
 #"short_url"=>{"original_url"=>"http://localhost:3000/short_urls/new", "short_url"=>"http://rock.com", "visits_count"=>"1"}
@@ -31,6 +31,7 @@ class Api::V1::ShortUrlsController < ApplicationController
   # PATCH/PUT /short_urls/1
   # PATCH/PUT /short_urls/1.json
   def update
+    debugger
       if @short_url.update(short_url_params)
        render json: { short_url: @short_url, status: "updated"  }
       else

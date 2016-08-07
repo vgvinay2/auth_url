@@ -1,0 +1,1 @@
+json.array! @short_visits, partial: 'short_visits/short_visit', as: :short_visit

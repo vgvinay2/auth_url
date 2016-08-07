@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160806141339) do
+ActiveRecord::Schema.define(version: 20160807084528) do
 
   create_table "short_urls", force: :cascade do |t|
     t.string   "original_url"
@@ -20,6 +20,18 @@ ActiveRecord::Schema.define(version: 20160806141339) do
     t.integer  "visits_count"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "short_visits", force: :cascade do |t|
+    t.integer  "short_url_id"
+    t.string   "visitor_ip"
+    t.string   "visitor_city"
+    t.string   "visitior_state"
+    t.string   "visitor_country_iso"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :short_visits
   resources :short_urls
   get "log_in" => "sessions#new", :as => "log_in"
   get "log_out" => "sessions#destroy", :as => "log_out"
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
        end 
        resources :users,only: [:create]
        resources :short_urls
+       resources :short_visit
     end
   end 
 end
