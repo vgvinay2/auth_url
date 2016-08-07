@@ -18,12 +18,12 @@ class Api::V1::SessionsController < ApplicationController
 
   
   def destroy
-    if user = User.pluck(:id).include?(params[:id])
-      user.api_token=nil 
+    if user = User.find_by_id(params[:id])
+      user.api_token = nil 
       # headers["X-AUTH-TOKEN"] = nil
-      render json: { :info => "Logged out" }
+      render json: { :message => "Logged out" }
     else
-      render json: { :info => "out" }
+      render json: { :message => "out" }
     end 
   end
  end

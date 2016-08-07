@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   has_many :short_urls
   before_create :encrypt_password
   after_create :update_authentication_token
+
+  validates :email, presence: true
+  validates :password, presence: true
+
   def encrypt_password
     self.password = Base64.encode64(self.password)
   end

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
            delete :destroy, :as => "log_out"
          end 
        end 
+       resources :users,only: [:create]
+       resources :short_urls
     end
   end 
 end
