@@ -17,15 +17,15 @@ class Api::V1::UsersController < ApplicationController
 
 
   
-  def destroy
-    if user = User.pluck(:id).include?(params[:id])
-      user.api_token=nil 
-      # headers["X-AUTH-TOKEN"] = nil
-      render json: { :info => "Logged out" }
-    else
-      render json: { :info => "out" }
-    end 
-  end
+  # def destroy
+  #   if user = User.pluck(:id).include?(params[:id])
+  #     user.api_token=nil 
+  #     # headers["X-AUTH-TOKEN"] = nil
+  #     render json: { :info => "Logged out" }
+  #   else
+  #     render json: { :info => "out" }
+  #   end 
+  # end
 
    private
     # Use callbacks to share common setup or constraints between actions.

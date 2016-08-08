@@ -12,13 +12,3 @@ Things you may want to cover:
 
 * Ruby version 2.2.1
 
-* Database creation
-
-* Database initialization
-
-* To run this application clone it ,Bundle and Rake db:create db:migrate thats it! 
-
-* ...
-
-
-<tt>rake doc:app</tt>.

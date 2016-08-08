@@ -1,6 +1,6 @@
 class Api::V1::ShortUrlsController < ApplicationController
   before_action :authenticate_user
-  before_action :set_short_url, only: [:show, :edit, :update, :destroy]
+  before_action :set_short_url, only: [:show, :destroy]
   # before_action :check_current_user,except: [:index]
  
   # GET /short_urls
@@ -13,9 +13,8 @@ class Api::V1::ShortUrlsController < ApplicationController
 
 
 
-  # GET /short_urls/1/edit
-  def edit
-    render json:  { short_url: @short_url, status: "edit form "  }
+  def show
+    render json:  { short_url: @short_url, status: "Sucess!!"  }
   end
   
    # we require this kind of parameters
@@ -28,51 +27,29 @@ class Api::V1::ShortUrlsController < ApplicationController
         puts  @url.inspect 
        short_url = api_current_user.short_urls.new(original_url: @url.long_url, short_url:@url.short_url, visits_count: 0 )
         if short_url.save
-         render json:  { short_url: short_url, status: "created"  }
+         render json:  { short_url: short_url, status: "Created"  }
         else
-        render json: {  errors: short_url.errors, status: "failed" } 
+        render json: {  errors: short_url.errors, status: "Failed" } 
         end   
     else
-      render json: {  errors: "original_url send proper", status: "failed" } 
+      render json: {  errors: "original_url send proper", status: "Failed" } 
     end
-  end
-
-  # PATCH/PUT /short_urls/1
-  # PATCH/PUT /short_urls/1.json
-  def update
-      if @short_url.update(short_url_params)
-       render json: { short_url: @short_url, status: "updated"  }
-      else
-        render json:  { errors: @short_url.errors, status: "Failed" }
-      end
   end
 
   # DELETE /short_urls/1
   # DELETE /short_urls/1.json
   def destroy
     if @short_url.destroy
-     render json: { status: "succesfully deleted" }
+     render json: { status: "Deleted" }
     else
-     render json: { head: "no_content" }
+     render json: { head: "no content" }
     end 
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    # def check_current_user
-    #   if params[:api_token].present? && User.find_by_api_token(params[:api_token])
-    #     api_current_user 
-    #   else
-    #     render json: { errors: "Please enter correct api_token which u have given" }   
-    #   end 
-    # end
     
     def set_short_url
       @short_url = ShortUrl.find(params[:id])
     end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def short_url_params
-      params.require(:short_url).permit(:original_url, :short_url, :visits_count)
-    end
+    
 end
