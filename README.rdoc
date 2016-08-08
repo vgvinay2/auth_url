@@ -1,28 +1,24 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+THis is web application as well as API based application and authontication is done without using any gem
+
+I have used 'rails', '4.2.3 ' ,ruby 2.2.1 
+gem 'will_paginate', '~> 3.1.0' for pagination
+gem 'rest-client' to use third party API request and response purpose. 
+gem 'bitly', '~> 0.9.0' this gem user for url shortner sub domain will bitly.
+
 
 Things you may want to cover:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
+* Ruby version 2.2.1
 
 * Database creation
 
 * Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* To run this application clone it ,Bundle and Rake db:create db:migrate thats it! 
 
 * ...
 
 
-Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
